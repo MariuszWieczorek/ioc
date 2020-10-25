@@ -45,8 +45,9 @@
   <ItemGroup>
     <Compile Include="EmailSender.cs" />
     <Compile Include="EventLogWriter.cs" />
-    <Compile Include="IISAppPoolWatcher.cs" />
+    <Compile Include="IISAppPoolWatcherC.cs" />
     <Compile Include="IISAppPoolWatcherM.cs" />
+    <Compile Include="IISAppPoolWatcherP.cs" />
     <Compile Include="INotificationAction.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ioc
 {
-    class IISAppPoolWatcher
+    class IISAppPoolWatcherC
     {
         // Handler naszego interfejsu do którego zostanie przypisana konkretna implementacja
         INotificationAction action = null;
-        public IISAppPoolWatcher(INotificationAction concreteImplementation)
+        public IISAppPoolWatcherC(INotificationAction concreteImplementation)
         {
             this.action = concreteImplementation;
         }

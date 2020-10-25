@@ -71,16 +71,27 @@ namespace ioc
 
             EventLogWriter writer = new EventLogWriter();
             EmailSender email = new EmailSender();
+            SMSSender sms = new SMSSender();
 
             // Wstrzyknięcie zależności przez konstruktor
             // Obiekt klasy zależnej będzie cały czas używał tej samej implementacji
-            IISAppPoolWatcher watcher = new IISAppPoolWatcher(writer);
-            watcher.Notify("błąd aplikacji");
+            // Jeżeli chcemy przekazywać różne zależności podczas każdego wywołania metody należy posłużyć się wstrzykiwaniem zależności przez metody
+            IISAppPoolWatcherC watcherC = new IISAppPoolWatcherC(writer);
+            watcherC.Notify("writer: DI przez konstruktor");
 
             // Wstrzyknięcie zależności przez metodę
             IISAppPoolWatcherM watcherM = new IISAppPoolWatcherM();
-            watcherM.Notify(writer,"błąd aplikacji");
-            watcherM.Notify(email, "błąd aplikacji");
+            watcherM.Notify(writer,"Writer: DI przez metodę");
+            watcherM.Notify(email, "email:  DI przez metodę");
+
+            // Wstrzyknięcie zależności przez właściwość
+            IISAppPoolWatcherP watcherP = new IISAppPoolWatcherP();
+            watcherP.Action = writer;
+            watcherP.Notify("writer: DI przez właściwość");
+            watcherP.Action = email;
+            watcherP.Notify("email: DI przez właściwość");
+            watcherP.Action = sms;
+            watcherP.Notify("sms: DI przez właściwość");
 
 
 
